@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>if (location.hostname !== "ytubefab.name.ng") { location.replace("https://ytubefab.name.ng/error.html"); }</script>
+
+<title>Ytubefab – Watch Movie Trailers &amp; Clips</title>
+<meta name="description" content="Ytubefab lets you discover and watch movie trailers and clips. Search any movie and watch it right inside the app. Install it on your phone for quick access.">
+<meta name="keywords" content="Ytubefab, movie trailers, movie clips, watch trailers online, movie search">
+<link rel="canonical" href="https://ytubefab.name.ng/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<!-- App install & icons -->
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#141414">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Ytubefab">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="application-name" content="Ytubefab">
+
+<!-- Social sharing -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ytubefab">
+<meta property="og:title" content="Ytubefab – Watch Movie Trailers &amp; Clips">
+<meta property="og:description" content="Discover and watch movie trailers and clips. Search any movie.">
+<meta property="og:url" content="https://ytubefab.name.ng/">
+<meta property="og:image" content="https://ytubefab.name.ng/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ytubefab – Watch Movie Trailers &amp; Clips">
+<meta name="twitter:description" content="Discover and watch movie trailers and clips. Search any movie.">
+<meta name="twitter:image" content="https://ytubefab.name.ng/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Ytubefab",
+  "alternateName": ["YtubeFab", "Ytube Fab"],
+  "url": "https://ytubefab.name.ng/",
+  "description": "Discover and watch movie trailers and clips."
+}
+</script>
+
+<style>
+  :root { --red:#e50914; --bg:#141414; --top:env(safe-area-inset-top,0px); --bot:env(safe-area-inset-bottom,0px); }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html { background:var(--bg); }
+  body { margin:0; background:var(--bg); color:#fff; font-family:system-ui,-apple-system,sans-serif; padding-bottom:calc(48px + var(--bot)); }
+  [hidden] { display:none !important; }
+
+  /* sign-in */
+  #auth { min-height:100dvh; display:grid; place-items:center; padding:calc(16px + var(--top)) 16px 16px; }
+  .acard { width:100%; max-width:400px; padding:32px 24px; background:rgba(0,0,0,.75); border:1px solid #2b2b2b; border-radius:8px; display:flex; flex-direction:column; gap:14px; }
+  .acard .logo { font-size:1.6rem; }
+  .acard h1 { margin:0; font-size:1.7rem; }
+  .tagline { margin:-6px 0 0; color:#b3b3b3; font-size:.9rem; line-height:1.4; }
+  .acard input { width:100%; padding:12px; background:#333; border:1px solid #444; border-radius:4px; color:#fff; font-size:1rem; }
+  .acard label { display:flex; flex-direction:column; gap:6px; font-size:.85rem; color:#b3b3b3; }
+  .btn { width:100%; padding:12px; border:0; border-radius:4px; font-size:1rem; font-weight:600; cursor:pointer; }
+  .btn.red { background:var(--red); color:#fff; }
+  .btn.g { background:#fff; color:#000; display:flex; align-items:center; justify-content:center; gap:10px; }
+  .btn:disabled { opacity:.6; cursor:default; }
+  .or { display:flex; align-items:center; gap:12px; color:#8c8c8c; font-size:.8rem; }
+  .or::before, .or::after { content:""; flex:1; height:1px; background:#333; }
+  .link { background:none; border:0; color:#b3b3b3; font-size:.9rem; text-align:left; padding:0; cursor:pointer; }
+  .link:hover { color:#fff; text-decoration:underline; }
+  #aerr { color:#ff8a80; font-size:.85rem; min-height:1em; }
+
+  /* app */
+  .nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:calc(12px + var(--top)) 16px 12px; background:linear-gradient(#141414,rgba(20,20,20,.85)); backdrop-filter:blur(6px); }
+  .logo { color:var(--red); font-weight:800; font-size:1.5rem; letter-spacing:.06em; }
+  .navr { display:flex; align-items:center; gap:4px; }
+  form.sf { display:flex; align-items:center; gap:8px; }
+  form.sf input { display:none; width:140px; padding:6px 10px; background:#000; border:1px solid #fff; border-radius:2px; color:#fff; font-size:1rem; }
+  form.sf.open input { display:block; }
+  .icon { background:none; border:0; color:#fff; font-size:1.15rem; padding:6px; cursor:pointer; }
+  #offline { background:#3a2a00; color:#ffd479; text-align:center; font-size:.8rem; padding:6px 12px; }
+  .hero { position:relative; height:56vh; min-height:320px; background:#222; overflow:hidden; }
+  .heroimg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .shade { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; gap:12px; padding:16px; background:linear-gradient(to top,#141414 4%,rgba(20,20,20,.2) 60%,rgba(20,20,20,.5)); }
+  .tag { font-family:ui-monospace,monospace; font-size:.7rem; letter-spacing:.15em; color:var(--red); }
+  .hero h2 { margin:0; font-size:1.5rem; line-height:1.15; max-width:90%; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .play { align-self:flex-start; padding:8px 22px; background:#fff; color:#000; border:0; border-radius:4px; font-weight:600; font-size:1rem; cursor:pointer; }
+  .row { margin-top:16px; }
+  .row h3 { margin:0 16px 8px; font-size:1.05rem; }
+  .rail { display:flex; gap:8px; overflow-x:auto; padding:0 16px; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:0 16px; }
+  .card { flex:0 0 auto; width:62vw; max-width:260px; padding:0; background:none; border:0; color:inherit; text-align:left; cursor:pointer; transition:transform .2s; }
+  .grid .card { width:100%; max-width:none; }
+  .card:hover { transform:scale(1.05); }
+  .card img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:4px; background:#222; }
+  .card span { display:-webkit-box; margin-top:6px; font-size:.8rem; color:#d2d2d2; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .skel { flex:0 0 auto; width:62vw; max-width:260px; aspect-ratio:16/9; border-radius:4px; background:#222; animation:p 1.2s infinite; }
+  @keyframes p { 50% { opacity:.5; } }
+  .err { margin:8px 16px; color:#ff8a80; font-size:.85rem; }
+  #modal { display:none; position:fixed; inset:0; z-index:100; background:rgba(0,0,0,.85); align-items:center; justify-content:center; padding:12px; }
+  #modal.show { display:flex; }
+  .box { width:100%; max-width:720px; background:#000; border:1px solid #333; padding:12px; }
+  .box h4 { margin:0 28px 8px 0; font-size:.95rem; }
+  .close { float:right; background:none; border:0; color:#fff; font-size:1.3rem; cursor:pointer; }
+  .player { position:relative; aspect-ratio:16/9; background:#000; }
+  .player iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .noplay { position:absolute; inset:0; display:grid; place-items:center; padding:16px; text-align:center; color:#b3b3b3; }
+
+  .card { position:relative; }
+  .save { position:absolute; top:6px; right:6px; width:28px; height:28px; border-radius:50%; background:rgba(0,0,0,.65); border:1px solid rgba(255,255,255,.6); color:#fff; display:grid; place-items:center; font-style:normal; font-size:1rem; line-height:1; }
+  .actions { display:flex; gap:8px; flex-wrap:wrap; }
+  .ghost { background:rgba(109,109,110,.75); color:#fff; }
+  .listbtn { margin-top:10px; background:#333; color:#fff; border:0; border-radius:4px; padding:8px 14px; font-weight:600; font-size:.9rem; cursor:pointer; }
+
+  /* install banner */
+  #install { position:fixed; left:12px; right:12px; bottom:calc(12px + var(--bot)); z-index:90; display:flex; align-items:center; gap:10px; padding:10px 12px; background:#222; border:1px solid #3a3a3a; border-radius:10px; font-size:.85rem; box-shadow:0 8px 24px rgba(0,0,0,.5); }
+  #install img { width:36px; height:36px; border-radius:8px; }
+  #itext { flex:1; line-height:1.3; }
+  #ibtn { background:var(--red); color:#fff; border:0; border-radius:4px; padding:8px 14px; font-weight:600; cursor:pointer; }
+  #iclose { background:none; border:0; color:#aaa; font-size:1.2rem; cursor:pointer; }
+</style>
+</head>
+<body>
+
+<noscript>
+  <h1>Ytubefab</h1>
+  <p>Ytubefab lets you discover and watch movie trailers and clips. Please turn on JavaScript to use the app.</p>
+</noscript>
+
+<!-- SIGN IN -->
+<section id="auth" hidden>
+  <div class="acard">
+    <div class="logo">YTUBEFAB</div>
+    <h1 id="atitle">Sign In</h1>
+    <p class="tagline">Ytubefab: discover and watch movie trailers and clips. Search any movie and watch it right here.</p>
+    <button class="btn g" id="gbtn" type="button">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      Continue with Google
+    </button>
+    <div class="or">or</div>
+    <form id="af" style="display:flex;flex-direction:column;gap:14px">
+      <label id="nameWrap" hidden>Display name<input id="aname" autocomplete="name"></label>
+      <label>Email<input id="aemail" type="email" autocomplete="email" required></label>
+      <label>Password<input id="apass" type="password" autocomplete="current-password" required></label>
+      <div id="aerr"></div>
+      <button class="btn red" id="asubmit" type="submit">Log In</button>
+    </form>
+    <button class="link" id="aswitch" type="button">New to Ytubefab? Sign up now.</button>
+  </div>
+</section>
+
+<!-- APP -->
+<div id="appwrap" hidden>
+  <nav class="nav">
+    <span class="logo">YTUBEFAB</span>
+    <div class="navr">
+      <form class="sf" id="sf">
+        <input id="q" placeholder="Search movies" enterkeyhint="search">
+        <button type="button" class="icon" id="sb" aria-label="Search">&#128269;</button>
+      </form>
+      <button type="button" class="icon" id="lo" aria-label="Sign out">&#x23FB;</button>
+    </div>
+  </nav>
+  <div id="offline" hidden>You're offline. Showing saved movies.</div>
+  <main id="app"></main>
+</div>
+
+<div id="install" hidden>
+  <img src="/icon-192.png" alt="">
+  <span id="itext"></span>
+  <button id="ibtn" type="button" hidden>Install</button>
+  <button id="iclose" type="button" aria-label="Close">&times;</button>
+</div>
+
+<div id="modal">
+  <div class="box">
+    <button class="close" id="mc" aria-label="Close">&times;</button>
+    <h4 id="mt"></h4>
+    <div class="player" id="mp"></div>
+    <button class="listbtn" id="ml" type="button" data-save="">+ My List</button>
+  </div>
+</div>
+
+<script>
+// Backend on Floot
+const API = "https://ytubefab.floot.app";
+
+const ROWS = [
+  ["Trending Trailers", "new movie official trailer"],
+  ["Action & Adventure", "action movie official trailer"],
+  ["Comedy", "comedy movie official trailer"],
+  ["Horror", "horror movie official trailer"],
+  ["Sci-Fi", "sci-fi movie official trailer"],
+];
+const FRESH_MS = 6 * 60 * 60 * 1000;     // reuse saved results for 6 hours
+const OFFLINE_MS = 24 * 60 * 60 * 1000;  // when offline, still show saved results for 24 hours
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+const byId = {};
+let token = localStorage.getItem("yt_token") || "";
+let registering = false;
+
+// text/plain keeps these "simple" requests, so the browser skips the CORS preflight
+async function api(path, payload) {
+  const res = await fetch(API + path, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain" },
+    body: JSON.stringify({ json: payload }),
+  });
+  const body = (await res.json()).json;
+  if (!res.ok) { const e = new Error(body.error || body.message || "Request failed"); e.status = res.status; throw e; }
+  return body;
+}
+
+/* ---------- offline / install ---------- */
+function showOffline() { $("offline").hidden = navigator.onLine; }
+window.addEventListener("online", () => { showOffline(); if (!$("appwrap").hidden && !$("g")) home(); });
+window.addEventListener("offline", showOffline);
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+}
+
+let deferredInstall = null;
+const standalone = () => window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+function offerInstall(text, withButton) {
+  if (standalone() || localStorage.getItem("yt_install_dismissed")) return;
+  $("itext").textContent = text;
+  $("ibtn").hidden = !withButton;
+  $("install").hidden = false;
+}
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault(); deferredInstall = e;
+  offerInstall("Install Ytubefab on your phone for quick access.", true);
+});
+window.addEventListener("appinstalled", () => { $("install").hidden = true; });
+$("ibtn").onclick = async () => {
+  if (!deferredInstall) return;
+  deferredInstall.prompt(); await deferredInstall.userChoice; deferredInstall = null; $("install").hidden = true;
+};
+$("iclose").onclick = () => { $("install").hidden = true; try { localStorage.setItem("yt_install_dismissed", "1"); } catch (e) {} };
+if (isIOS && !standalone()) {
+  setTimeout(() => offerInstall("To install: tap the Share button, then \"Add to Home Screen\".", false), 2500);
+}
+
+/* ---------- auth ---------- */
+function setToken(t) { token = t; if (t) localStorage.setItem("yt_token", t); else localStorage.removeItem("yt_token"); }
+
+function showAuth(msg) {
+  $("appwrap").hidden = true; $("auth").hidden = false;
+  $("aerr").textContent = msg || "";
+}
+function showApp() {
+  $("auth").hidden = true; $("appwrap").hidden = false;
+  showOffline();
+  home();
+}
+function logout() { setToken(""); Object.keys(localStorage).filter(k => k.startsWith("yt:")).forEach(k => localStorage.removeItem(k)); showAuth(); }
+
+async function finishAuth(call) {
+  $("aerr").textContent = "";
+  $("asubmit").disabled = true; $("gbtn").disabled = true;
+  try { const r = await call(); setToken(r.token); showApp(); }
+  catch (e) { $("aerr").textContent = e.status ? e.message : "No internet connection. Please try again."; }
+  finally { $("asubmit").disabled = false; $("gbtn").disabled = false; }
+}
+
+$("af").onsubmit = (e) => {
+  e.preventDefault();
+  const email = $("aemail").value.trim(), password = $("apass").value;
+  finishAuth(() => registering
+    ? api("/_api/ext/auth", { action: "register", email, password, displayName: $("aname").value.trim() || email.split("@")[0] })
+    : api("/_api/ext/auth", { action: "login", email, password }));
+};
+$("aswitch").onclick = () => {
+  registering = !registering;
+  $("atitle").textContent = registering ? "Create Account" : "Sign In";
+  $("asubmit").textContent = registering ? "Create Account" : "Log In";
+  $("aswitch").textContent = registering ? "Already have an account? Sign in." : "New to Ytubefab? Sign up now.";
+  $("nameWrap").hidden = !registering;
+  $("aerr").textContent = "";
+};
+$("gbtn").onclick = () => {
+  const popup = window.open(API + "/_api/auth/oauth_authorize?provider=floot", "ytfGoogle", "width=500,height=600");
+  if (!popup) { $("aerr").textContent = "Allow pop-ups to sign in with Google."; return; }
+  const onMsg = (ev) => {
+    if (ev.origin !== API) return;
+    const d = ev.data || {};
+    if (d.type === "OAUTH_TOKEN_SUCCESS") {
+      window.removeEventListener("message", onMsg);
+      finishAuth(() => api("/_api/ext/auth", { action: "google", tempToken: d.token }));
+    } else if (d.type === "OAUTH_ERROR") {
+      window.removeEventListener("message", onMsg);
+      $("aerr").textContent = (d.error && d.error.message) || "Google sign-in failed.";
+    }
+  };
+  window.addEventListener("message", onMsg);
+};
+$("lo").onclick = logout;
+
+/* ---------- movies ---------- */
+async function search(query) {
+  const key = "yt:" + query;
+  let cached = null;
+  try { cached = JSON.parse(localStorage.getItem(key) || "null"); } catch (e) {}
+  if (cached && Date.now() - cached.t < FRESH_MS) return cached.d;
+  try {
+    const body = await api("/_api/search", { query, kind: "any", token });
+    try { localStorage.setItem(key, JSON.stringify({ t: Date.now(), d: body.results })); } catch (e) {}
+    return body.results;
+  } catch (e) {
+    if (e.status === 401) { logout(); showAuth("Your session expired. Please sign in again."); throw e; }
+    if (!e.status) { // no internet: fall back to saved movies for a limited time
+      showOffline();
+      if (cached && Date.now() - cached.t < OFFLINE_MS) return cached.d;
+      e.message = "You're offline and there are no saved movies for this. Connect to the internet to load more.";
+    }
+    throw e;
+  }
+}
+
+const LIST_KEY = "yt_list";
+const getList = () => { try { return JSON.parse(localStorage.getItem(LIST_KEY) || "[]"); } catch (e) { return []; } };
+const isSaved = (id) => getList().some((x) => x.id === id);
+function updateSaveButtons() {
+  document.querySelectorAll("[data-save]").forEach((el) => {
+    if (!el.dataset.save) return;
+    const saved = isSaved(el.dataset.save);
+    el.textContent = el.tagName === "I" ? (saved ? "\u2713" : "+") : (saved ? "\u2713 In My List" : "+ My List");
+  });
+}
+function renderMyList() {
+  const list = getList(), sec = $("mylist");
+  if (sec) { sec.hidden = list.length === 0; $("mylistrail").innerHTML = list.map(card).join(""); }
+  updateSaveButtons();
+}
+function toggleSave(v) {
+  if (!v) return;
+  const list = getList();
+  const next = isSaved(v.id) ? list.filter((x) => x.id !== v.id) : [v, ...list];
+  try { localStorage.setItem(LIST_KEY, JSON.stringify(next.slice(0, 100))); } catch (e) {}
+  renderMyList();
+}
+
+const IMGERR = "if(this.crossOrigin){this.removeAttribute('crossorigin');this.src=this.src}";
+const card = (v) => { byId[v.id] = v;
+  return `<button class="card" data-id="${esc(v.id)}"><img crossorigin="anonymous" onerror="${IMGERR}" src="${esc(v.thumbnail)}" alt="${esc(v.title)}" loading="lazy"><span>${esc(v.title)}</span><i class="save" role="button" aria-label="Add to My List" data-save="${esc(v.id)}">+</i></button>`; };
+
+function play(id) {
+  const v = byId[id]; if (!v) return;
+  $("mt").textContent = v.title;
+  $("mp").innerHTML = navigator.onLine
+    ? `<iframe src="https://www.youtube.com/embed/${encodeURIComponent(v.id)}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`
+    : `<div class="noplay">You're offline. Connect to the internet to watch.</div>`;
+  $("ml").dataset.save = v.id;
+  updateSaveButtons();
+  $("modal").classList.add("show");
+}
+function closeModal() { $("modal").classList.remove("show"); $("mp").innerHTML = ""; }
+
+function home() {
+  const app = $("app");
+  app.innerHTML = `<section class="hero" id="hero"></section><section class="row" id="mylist" hidden><h3>My List</h3><div class="rail" id="mylistrail"></div></section>` + ROWS.map((r, i) =>
+    `<section class="row"><h3>${esc(r[0])}</h3><div class="rail" id="r${i}">${'<div class="skel"></div>'.repeat(5)}</div></section>`).join("");
+  renderMyList();
+  ROWS.forEach(async (r, i) => {
+    const rail = $("r" + i);
+    try {
+      const list = await search(r[1]);
+      rail.innerHTML = list.map(card).join("");
+      updateSaveButtons();
+      if (i === 0 && list[0]) {
+        const v = list[0];
+        byId[v.id] = v;
+        $("hero").innerHTML = `<img class="heroimg" crossorigin="anonymous" onerror="${IMGERR}" src="${esc(v.thumbnail)}" alt=""><div class="shade"><span class="tag">FEATURED</span><h2>${esc(v.title)}</h2><div class="actions"><button class="play" data-id="${esc(v.id)}">&#9654; Play</button><button class="play ghost" data-save="${esc(v.id)}">+ My List</button></div></div>`;
+        updateSaveButtons();
+      }
+    } catch (e) { if (e.status !== 401) rail.outerHTML = `<p class="err">${esc(e.message)}</p>`; }
+  });
+}
+
+async function results(q) {
+  $("app").innerHTML = `<section class="row"><h3>Results for "${esc(q)}"</h3><div class="grid" id="g">${'<div class="skel"></div>'.repeat(6)}</div></section>`;
+  try { $("g").innerHTML = (await search(q)).map(card).join(""); updateSaveButtons(); }
+  catch (e) { if (e.status !== 401) $("g").outerHTML = `<p class="err">${esc(e.message)}</p>`; }
+}
+
+document.addEventListener("click", (e) => {
+  const sv = e.target.closest("[data-save]");
+  if (sv && sv.dataset.save) { e.preventDefault(); toggleSave(byId[sv.dataset.save]); return; }
+  const t = e.target.closest("[data-id]");
+  if (t) play(t.dataset.id);
+});
+$("mc").onclick = closeModal;
+$("modal").onclick = (e) => { if (e.target.id === "modal") closeModal(); };
+$("sb").onclick = () => {
+  const f = $("sf");
+  if (f.classList.toggle("open")) $("q").focus(); else { $("q").value = ""; home(); }
+};
+$("sf").onsubmit = (e) => { e.preventDefault(); const q = $("q").value.trim(); if (q) results(q); };
+
+/* ---------- start ---------- */
+(async function boot() {
+  if (!token) return showAuth();
+  try {
+    const r = await api("/_api/ext/auth", { action: "session", token });
+    setToken(r.token);
+    showApp();
+  } catch (e) {
+    if (e.status === 401 || e.status === 400) { setToken(""); showAuth(); }
+    else showApp(); // offline or network hiccup: open with the saved sign-in and saved movies
+  }
+})();
+</script>
+</body>
+</html>
